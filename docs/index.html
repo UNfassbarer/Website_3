@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maschinenbau Stoffübersicht</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="sidebar_left">
+        <div class="menu-icon-left"></div>
+        <h2>Maschinenbau</h2>
+        <div class="category" id="left_1">
+            <a href="#">Einteilung der Stähle <span class="arrow">▼</span></a>
+            <div class="submenu">
+                <div class="submenu_special_left" id="werkstoffnummern" href="#"><a href="#">Werkstoffnummern</a></div>
+                <div class="submenu_special_left" id="reinheit" href="#"><a href="#">Reinheit</a></div>
+                <div class="submenu_special_left" id="legierungsgrad" href="#"><a href="#">Legierungsgrad</a></div>
+                <div class="submenu_special_left" id="verwendung" href="#"><a href="#">Verwendung</a></div>
+                <div class="submenu_special_left" id="wärmebehandlung" href="#"><a href="#">Wärmebehandlung</a></div>
+                <div class="submenu_special_left" id="baustähle" href="#"><a href="#">Baustähle</a></div>
+                <div class="submenu_special_left" id="kohlenstoffstähle" href="#"><a href="#">Kohlenstoffstähle</a>
+                </div>
+                <div class="submenu_special_left" id="werkzeugstähle" href="#"><a href="#">Werkzeugstähle</a></div>
+                <div class="submenu_special_left" id="schnellarbeitsstähle" href="#"><a
+                        href="#">Schnellarbeitsstähle</a></div>
+                <div class="submenu_special_left" id="gusseisen" href="#"><a href="#">Gusseisen</a></div>
+            </div>
+        </div>
+        <div class="category" id="left_2">
+            <a href="#" class="head">Fertigkeitslehre <span class="arrow">▼</span></a>
+            <div class="submenu">
+                <div class="submenu_special_left" id="festigkeit" href="#"><a href="#">Übersicht</a></div>
+                <div class="submenu_special_left" id="zug" href="#"><a href="#">Zug</a></div>
+                <div class="submenu_special_left" id="druck" href="#"><a href="#">Druck</a></div>
+                <div class="submenu_special_left" id="flächenpressung" href="#"><a href="#">Flächenpressung</a></div>
+                <div class="submenu_special_left" id="abscherung" href="#"><a href="#">Abscherung</a></div>
+                <div class="submenu_special_left" id="verdrehung" href="#"><a href="#">Verdrehung</a></div>
+                <div class="submenu_special_left" id="biegung" href="#"><a href="#">Biegung</a></div>
+            </div>
+        </div>
+
+        <div class="category" id="left_3">
+            <a href="#" class="head">Granzmaße & Passungen<span class="arrow">▼</span></a>
+            <div class="submenu">
+                <div class="submenu_special_left" id="welle_bohrung" href="#"><a href="#">Wellen und Bohrungen</a></div>
+                <div class="submenu_special_left" id="toleranz" href="#"><a href="#">Toleranz</a></div>
+                <div class="submenu_special_left" id="passung" href="#"><a href="#">Passung</a></div>
+            </div>
+        </div>
+        <div class="category" id="left4">
+            <a href="#" class="head">Übersichten<span class="arrow">▼</span></a>
+            <div class="submenu">
+                <div class="submenu_special_left" id="beanspruchungsarten" href="#"><a href="#">Beansprungungsarten</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar_right" id="right">
+        <div class="menu-icon-right"></div>
+        <div class="textbox">
+            <h2>Maschinenbau_2</h2>
+            <div class="category" id="righgt_1">
+                <a href="#">Berechnungen<span class="arrow">▼</span></a>
+                <button id="B_Clear_Calc" class="B_clear_Reset" onclick="Clear_Reset_Hover(Clear_Calc,this)">Clear
+                    Values</button>
+                <div class="submenu">
+                    <div class="submenu_special_right" id="show_calculator"><a href="#">Berechnung</a></div>
+                </div>
+
+                <div class="submenu">
+                    <div class="submenu_special_right" id="central_force_system"><a href="MBT_Calc.html"
+                            target="_blank">Zentrales Kräftesystem</a></div>
+                </div>
+            </div>
+            <div class="category" id="righgt_2">
+                <a href="#" id="category_pins">Pins <span class="arrow">▼</span> </a>
+                <button id="B_Clear" class="B_clear_Reset " onclick="Clear_Reset_Hover(Clear,this)">Clear Pins</button>
+                <button id="B_Reset" class="B_clear_Reset " onclick="Clear_Reset_Hover(Reset,this)">Reset
+                    Counter</button>
+                <div class="submenu Pins" id="add_pins">
+                    <!-- 
+                    <div class="submenu_special_right Pin_div" id="Pin_Counter"><a href="#">Example Pin</a>
+                        <Button class="Pin_Buttons" id="Button_Pin_1">C</Button>
+                        <div id="Pin_Content_Counter" style="display: none">Example content</div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="TentionCalc" id="calculator">
+        <input type="number" id="tention" placeholder="Spannung"><br>
+        <input type="number" id="force" placeholder="Kraft"><br>
+        <input type="number" id="area" placeholder="Fläche">
+    </div>
+
+    <div class="info-box">
+        <h1>I</h1>
+        <div class="info-box-content">
+            <h4>Info-Box</h4> <button id="remove" class="B_clear" onclick="ClearAll()"><strong>C</strong></button>
+            <p>Alle Offenen Tabs schließen und letzte Notitz speichern.</p>
+        </div>
+    </div>
+    <div class="note-box" id="box">
+        <strong class="h1">N</strong>
+        <h4>Note-Box</h4>
+        <button id="noteButton" class="B_notes" onclick="Pin_note()"><strong>Pin</strong></button>
+        <div class="loader" id="loding_circle"></div>
+        <div class="note_content" contenteditable="true" id="Note_Content">type something here...
+        </div>
+    </div>
+
+    <!-- Stahleinteilungen -->
+
+    <div class="content-container hidden_content" id="werkstoffnummern_content">
+        <img src="example.jpg" alt="Example Image">
+        <h2>Werkstoffnummern</h2>
+        <p>Informationen zu Werkstoffnummern.</p>
+    </div>
+    <div class="content-container hidden_content" id="reinheit_content"><img src="example.jpg" alt="Example Image">
+        <h2>Reinheit</h2>
+        <p>Informationen zur Reinheit.</p>
+    </div>
+
+    <div class="content-container hidden_content" id="legierungsgrad_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Legierungsgrad</h2>
+        <p>Informationen zum Legierungsgrad.</p>
+    </div>
+
+    <div class="content-container hidden_content" id="verwendung_content"><img src="example.jpg" alt="Example Image">
+        <h2>Verwendung</h2>
+        <p>Informationen zur Verwendung.</p>
+    </div>
+
+    <div class="content-container hidden_content" id="wärmebehandlung_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Wärmebehandlung</h2>
+        <p>Informationen zur Wärmebehandlung.</p>
+    </div>
+    <div class="content-container hidden_content" id="baustähle_content"><img src="example.jpg" alt="Example Image">
+        <h2>Baustähle</h2>
+        <p>Informationen zu Baustählen.</p>
+    </div>
+    <div class="content-container hidden_content" id="kohlenstoffstähle_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Kohlenstoffstähle</h2>
+        <p>Informationen zu Kohlenstoffstählen.</p>
+    </div>
+    <div class="content-container hidden_content" id="werkzeugstähle_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Werkzeugstähle</h2>
+        <p>Informationen zu Werkzeugstählen.</p>
+    </div>
+    <div class="content-container hidden_content" id="schnellarbeitsstähle_content"><img src="example.jpg"
+            alt="Example Image">
+        <h2>Schnellarbeitsstähle</h2>
+        <p>Informationen zu Schnellarbeitsstählen.</p>
+    </div>
+    <div class="content-container hidden_content" id="gusseisen_content"><img src="example.jpg" alt="Example Image">
+        <h2>Gusseisen</h2>
+        <p>Informationen zu Gusseisen.</p>
+    </div>
+
+    <!--Content container for "Festigkeitslehre" (1 + 6)  -->
+
+    <div class="content-container " id="festigkeit_content">
+        <h2>Übersicht über die Festigkeitslehre</h2>
+        <div class="definition">Was ist Festigkeit?
+            <div class="definition_sub hidden_content" id="140">
+                Die Festigkeit beschreibt den Weiderstand eines Körpers gegen äußere Belastungen
+                im Verhältniss: Spannung= <sup>Kraft</sup>&frasl;<sub>Fläche</sub><br>
+                Dieser Weiderstand wird in Normal-oder Schubspannung angegeben.
+            </div>
+            <button class="Pin_Buttons defi_cub_B hidden_content" onclick="close_definition_sub(this)"
+                id="test">C</button>
+        </div>
+        <br>
+        <div class="definition">Festigkeitsarten
+            <div class="definition_sub hidden_content" id="150">
+                Die Festigkeitsarten leiten sich aus <br>
+                den Belastungsart ab: Zugbelastung, Druckbelastung, Flächenpressung, Abscherung, Torsion und
+                Beigung.<br>
+                Oft ist es möglich von dem Zugversuch auf weitere Belastungen zu schließen.
+            </div>
+            <button class="Pin_Buttons defi_cub_B hidden_content" onclick="close_definition_sub(this)">C</button>
+        </div>
+        <br>
+        <div class="definition">Grundlagen Zugversuch
+            <div class="definition_sub hidden_content" id="90">
+            </div>
+            <button class="Pin_Buttons defi_cub_B hidden_content" onclick="close_definition_sub(this)">C</button>
+        </div>
+        <br>
+        <div class="definition">Normalspannung
+            <div class="definition_sub hidden_content" id="110">
+                Normalspannung (σ) tritt auf, wenn eine Kraft senkrecht zur betrachteten Fläche wirkt.
+                Sie trit bei Zug, Druck, Flächenpressung und Biegung auf.
+            </div>
+            <button class="Pin_Buttons defi_cub_B hidden_content" onclick="close_definition_sub(this)">C</button>
+        </div>
+        <br>
+        <div class="definition">Schubspannung
+            <div class="definition_sub hidden_content" id="110">
+                Schubspannung (τ) entsteht, wenn eine Kraft parallel zur Fläche wirkt.
+                Sie ist besonders relevant bei Scher-und Torsionsbeanspruchungen.
+            </div>
+            <button class="Pin_Buttons defi_cub_B hidden_content" onclick="close_definition_sub(this)">C</button>
+        </div>
+    </div>
+
+    <div class="content-container hidden_content" id="zug_content">
+        <img src="example.jpg" alt="Example Image" style="display: none;">
+        <h2>Beanspruchung auf Zug</h2>
+        <div class="dropdown_1">
+            <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper">
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Zugspannung','Erford. Querschnitt','Zuläs. Zugspannung')">
+            </div>
+        </div>
+        <div class="dropdown_2">
+            <div class="Calculation_Menu">Kenngrößen<span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper" id="zug">
+                <div class="Calculations" id="σ_z">Zugspannung</div>
+                <div class="Calculations" id="S_erf_zug">Erforderliche Querschnittsfläche</div>
+                <div class="Calculations" id="σ_zzul">Zulässige Zugspannung</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container hidden_content" id="druck_content">
+        <img src="example.jpg" alt="Example Image" style="display: none;">
+        <h2>Beanspruchung auf Druck</h2>
+        <div class="dropdown_1">
+            <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper">
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Druckspannung','Erford. Querschnitt','Zuläs. Druckspannung')">
+            </div>
+        </div>
+        <div class="dropdown_2">
+            <div class="Calculation_Menu">Kenngrößen<span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper" id="druck">
+                <div class="Calculations" id="σ_d">Druckspannung</div>
+                <div class="Calculations" id="S_erf_druck">Erforderliche Querschnittsfläche</div>
+                <div class="Calculations" id="σ_dzul">Zulässige Druckspannung</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container hidden_content" id="flächenpressung_content">
+        <img src="example.jpg" alt="Example Image" style="display: none;">
+        <h2>Beanspruchung auf Flächenpressung</h2>
+        <div class="dropdown_1">
+            <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper">
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Flächenpressung','Erford. Berührfläche','Zuläs. Flächenpressung')">
+            </div>
+        </div>
+        <div class="dropdown_2">
+            <div class="Calculation_Menu">Kenngrößen<span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper" id="flächenpressung">
+                <div class="Calculations" id="p">Flächenpressung</div>
+                <div class="Calculations" id="A_erf">Erforderliche Berührungsfläche</div>
+                <div class="Calculations" id="p_zul">Zulässige Flächenpressung</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container hidden_content" id="abscherung_content">
+        <img src="example.jpg" alt="Example Image" style="display: none;">
+        <h2 style="font-family: 'Courier New', Courier, monospace; font-size: 35px;">Beanspruchung auf Abscherung</h2>
+        <div class="dropdown_1">
+            <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper">
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Scherspannung','Erford. Querschnit','Zuläs. Scherspannung')">
+            </div>
+        </div>
+        <div class="dropdown_2">
+            <div class="Calculation_Menu">Kenngrößen<span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper" id="abscherung">
+                <div class="Calculations" id="τ_a">Scherspannungspannung</div>
+                <div class="Calculations" id="S_erf_scher">Erforderliche Querschnittsfläche</div>
+                <div class="Calculations" id="τ_azul">Zulässige Scherspannungspannung</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container hidden_content" id="verdrehung_content">
+        <img src="example.jpg" alt="Example Image" style="display: none;">
+        <h2>Beanspruchung auf Verdrehung</h2>
+        <div class="dropdown_1">
+            <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper">
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Torsionsspannung','erford. pol. Wied.','zuläs. Torsionsspannung')">
+            </div>
+        </div>
+        <div class="dropdown_2">
+            <div class="Calculation_Menu">Kenngrößen<span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper" id="verdrehung">
+                <div class="Calculations" id="τ_t">Torsionsspannung</div>
+                <div class="Calculations" id="Wp_erf">Erforderliche Querschnittsfläche</div>
+                <div class="Calculations" id="τ_tzul">Zulässige Torsionsspannung</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container hidden_content" id="biegung_content">
+        <img src="example.jpg" alt="Example Image" style="display: none;">
+        <h2 style="font-family: 'Courier New', Courier, monospace; font-size: 35px;">Beanspruchung auf Biegung</h2>
+        <div class="dropdown_1">
+            <div class="Calculation_Menu">Berechnung <span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper">
+                <input type="button" value="Calculator" class="B_Calculate" id="B_Calculate"
+                    onclick="showCalculator('Biegespannung','Erford. axial. Wied.','Zuläs. Biegespannung')">
+            </div>
+        </div>
+        <div class="dropdown_2">
+            <div class="Calculation_Menu">Kenngrößen<span class="arrow">▼</span></div>
+            <div class="Calculations_Wrapper" id="knickung">
+                <div class="Calculations" id="σ_b">Biegespannung</div>
+                <div class="Calculations" id="W_erf">Erforderliches axiales Wiederstandsmoment</div>
+                <div class="Calculations" id="σ_bzul">Zulässige Biegespannung</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Passungen -->
+
+    <div class="content-container hidden_content" id="welle_bohrung_content">
+        <h2>Wellen & Bohrungen</h2>
+        <p>Informationen zu Wellen & Bohrungen.</p>
+    </div>
+
+    <div class="content-container hidden_content" id="toleranz_content">
+        <h2>Tolarenzen</h2>
+        <p>Informationen zu Tolarenzen.</p>
+    </div>
+
+    <div class="content-container hidden_content" id="passung_content">
+        <h2>Passungen</h2>
+        <p>Informationen zu Passungen.</p>
+    </div>
+
+    <!-- Übersichten -->
+
+    <div class="content-container hidden_content" id="beanspruchungsarten_content" style="padding: 50px;">
+        <h3>Beansprungungsarten & Grenzspannungen</h3>
+        <table border id="table_stress">
+            <thead>
+                <tr>
+                    <th>Belastungsart</th>
+                    <th>Spannung</th>
+                    <th>Verformung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Zug</td>
+                    <td>Zugspannung σ<sub>zug</sub></td>
+                    <td>Dehnung, Bruchdehnung A</td>
+                </tr>
+                <tr>
+                    <td>Druck</td>
+                    <td>Druckspannung σ<sub>druck</sub></td>
+                    <td>Stauchung</td>
+                </tr>
+                <tr>
+                    <td>Biegung</td>
+                    <td>Biegungsspannung σ<sub>b</sub></td>
+                    <td>Durchbiegung</td>
+                </tr>
+                <tr>
+                    <td>Abscheren</td>
+                    <td>Schubspannung τ</td>
+                    <td>Verschiebung / Schubverzerrung γ</td>
+                </tr>
+                <tr>
+                    <td>Torsion</td>
+                    <td>Schubspannung τ<sub>t</sub></td>
+                    <td>Verdrehwinkel φ</td>
+                </tr>
+                <tr>
+                    <td>Knickung</td>
+                    <td>Druckspannung σ<sub>krit</sub></td>
+                    <td>Knicklänge / Knickauslenkung</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Extras -->
+    <div id="extra_content">
+        <h4 id="extra_content_head">Extras</h4>
+        <p id="main_extra_content">test</p>
+        <img src="" alt="example img">
+    </div>
+    <div class="hidden_content">
+        <!-- Zug -->
+        <p id="E_σ_z">Zugspannung</p>
+        <p id="E_S_erf_zug">Erforderliche Querschnittsfläche bei Zug</p>
+        <p id="E_σ_zzul">Zulässige Zugspannung</p>
+        <!-- Druck -->
+        <p id="E_σ_d">Druckspannung</p>
+        <p id="E_S_erf_druck">Erforderliche Querschnittsfläche bei Druck</p>
+        <p id="E_σ_dzul">Zulässige Druckspannung</p>
+        <!-- Pressung -->
+        <p id="E_p">Pressung</p>
+        <p id="E_A_erf_press">Erforderliche Pressfläche</p>
+        <p id="E_p_zul">Zulässige Pressung</p>
+        <!-- Schub (Abscherung) -->
+        <p id="E_τ_a">Schubspannung (Abscherung)</p>
+        <p id="E_S_erf_scher">Erforderliche Querschnittsfläche bei Abscherung</p>
+        <p id="E_τ_azul">Zulässige Schubspannung (Abscherung)</p>
+        <!-- Schub (Torsion) -->
+        <p id="E_τ_t">Schubspannung (Torsion)</p>
+        <p id="E_Wp_erf">Erforderliches polares Widerstandsmoment</p>
+        <p id="E_τ_tzul">Zulässige Schubspannung (Torsion)</p>
+        <!-- Biegung -->
+        <p id="E_σ_b">Biegespannung</p>
+        <p id="E_W_erf">Erforderliches Widerstandsmoment</p>
+        <p id="E_σ_bzul">Zulässige Biegespannung</p>
+        /p>
+
+    </div>
+
+    <!-- /Extras -->
+    <script src="script.js"></script>
+</body>
+
+</html>

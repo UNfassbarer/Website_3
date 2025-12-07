@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBT Force Calculation</title>
+</head>
+<style>
+body {
+    background-color: rgb(135, 138, 150);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.75);
+    text-align: center;
+}
+
+button {
+    border-radius: 40px;
+    background-color: rgba(84, 80, 80, 0.689);
+    padding: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    background-color: rgba(33, 225, 33, 0.59);
+    transform: scale(1.1);
+}
+
+.output {
+    width: 80%;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 5px auto;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+}
+.final_output{
+    width: 70%;
+    max-width: 500px;
+    background: rgba(153, 43, 43, 0.2);
+    padding: 10px;
+    margin: 5px auto;
+    border-radius: 10px;
+    text-align: center;
+}
+.final_output:empty{
+    display: none;
+}
+
+.output:empty {
+    display: none;
+}
+.force_input{
+    width: 70%;
+    max-width: 500px;
+    background: rgba(153, 43, 43, 0.2);
+    padding: 10px;
+    margin: 5px auto;
+    border-radius: 10px;
+    text-align: center;
+}
+/* .force_input:empty{
+    display: none;
+} */
+
+</style>
+
+<body>
+
+    <div class="in/output-container">
+        <h1>Zentrales Kräftesystem</h1>
+        <button type="button" id="button_1" onclick="programm()">Add forces</button>
+        <input type="number" id="input" placeholder="Insert number of forces">
+        <button type="button" id="button_2" onclick="calculation()">Start Calculation</button><br>
+        Show advanced calculations: <input type="checkbox" id="checkbox" placeholder="_">
+        <div class="force_input" id="forces_container">test1</div>
+        <div class="force_input" id="angles_container">test2</div>
+        <div class="output" id="sin_a_container"></div>
+        <div class="output" id="cos_a_container"></div>
+        <div class="output" id="force_y_container"></div>
+        <div class="output" id="force_x_container"></div>
+        <div class="output" id="force_y_ges_container"></div>
+        <div class="output" id="force_x_ges_container"></div><br>
+        <strong><div class="final_output" id="final_force_container"></div></strong>
+        <strong><div class="final_output" id="final_angle_container"></div></strong>
+    </div>
+</body>
+<script>
+    function programm() {
+        let input = document.getElementById("input").value
+        document.getElementById("forces_container").innerHTML = '';
+        document.getElementById("angles_container").innerHTML = '';
+        for (let i = 1; i <= input; i++) {
+            addForces(i)
+            addAngles(i)
+        }
+    }
+    function addForces(i) {
+        let newElement = document.createElement("input")
+        let br = document.createElement("br")
+        let text = document.createElement("span")
+        newElement.type = "number"
+        newElement.id = `force_input_${i}`
+        newElement.placeholder = `Force: ${i}`
+        text.innerText = `${i}. Force: `
+        let container = document.getElementById("forces_container")
+        container.appendChild(text)
+        container.appendChild(newElement)
+        container.appendChild(br)
+    }
+    function addAngles(i) {
+        let newElement = document.createElement("input")
+        let br = document.createElement("br")
+        let text = document.createElement("span")
+        newElement.type = "number"
+        newElement.id = `angle_input_${i}`
+        newElement.placeholder = `Angle: ${i}`
+        text.innerText = `${i}. Angle: `
+        let container = document.getElementById("angles_container")
+        container.appendChild(text)
+        container.appendChild(newElement)
+        container.appendChild(br)
+    }
+    function calculation() {
+        (document.getElementById("checkbox").checked === true) ? show():clear()
+        SinA = "", CosA = "", ForceX = "", ForceY = "", ForceGes = "", AngleGes = ""
+        let input = document.getElementById("input").value;
+        let ForceX_ges = 0, ForceY_ges = 0, angle, force, sinusA, cosinusA, KraftX, KraftY;
+        for (let i = 1; i <= input; i++) {
+            angle = document.getElementById(`angle_input_${i}`).value;
+            force = document.getElementById(`force_input_${i}`).value;
+            console.log(`angle: ${angle}`);
+            console.log(`force: ${force}`);
+            SIN_A(i);
+            COS_A(i);
+            KRAFT_Y(i);
+            KRAFT_X(i);
+            ForceX_ges += KraftX;
+            ForceY_ges += KraftY;
+        }
+        ForceYGes = `Forces in Y-Direction: ${ForceY_ges}`;
+        ForceXGes = `Forces in X-Direction: ${ForceX_ges}`;
+        F_GES();
+        F_ALPHA();
+        function SIN_A(i) {
+            sinusA = Math.round(Math.sin(angle * (Math.PI / 180)) * 100000) / 100000;
+            SinA += `Sinus Alpha ${i}: ${sinusA}<br>`;
+        }
+        function COS_A(i) {
+            cosinusA = Math.round(Math.cos(angle * (Math.PI / 180)) * 100000) / 100000;
+            CosA += `Cosinus Alpha ${i}: ${cosinusA}<br>`;
+        }
+        function KRAFT_Y(i) {
+            KraftY = Math.round(sinusA * force * 100000) / 100000;
+            ForceY += `Force ${i} in Y-direction: ${KraftY}<br>`;
+        }
+        function KRAFT_X(i) {
+            KraftX = Math.round(cosinusA * force * 100000) / 100000;
+            ForceX += `Force ${i} in X-direction: ${KraftX}<br>`;
+        }
+        function F_GES() {
+            ForceGes = Math.round(Math.sqrt(Math.pow(ForceX_ges, 2) + Math.pow(ForceY_ges, 2)) * 1000) / 1000;
+        }
+        function F_ALPHA() {
+            AngleGes = Math.round(Math.atan2(ForceY_ges, ForceX_ges) * (180 / Math.PI) * 1000) / 1000;
+            AngleGes < 0 ? AngleGes = 360 + AngleGes : false
+        }
+        document.getElementById("final_force_container").innerHTML = `Final force: ${ForceGes}`;
+        document.getElementById("final_angle_container").innerHTML = `Angle of final force: ${AngleGes}°`;
+    }
+    function clear(){
+        document.getElementById("sin_a_container").innerHTML = "";
+        document.getElementById("cos_a_container").innerHTML = "";
+        document.getElementById("force_y_container").innerHTML = "";
+        document.getElementById("force_x_container").innerHTML = "";
+        document.getElementById("force_y_ges_container").innerHTML = "";
+        document.getElementById("force_x_ges_container").innerHTML = "";
+    }
+    function show(){
+        clear()
+        document.getElementById("sin_a_container").innerHTML += SinA;
+        document.getElementById("cos_a_container").innerHTML += CosA;
+        document.getElementById("force_y_container").innerHTML += ForceY;
+        document.getElementById("force_x_container").innerHTML += ForceX;
+        document.getElementById("force_y_ges_container").innerHTML += ForceYGes;
+        document.getElementById("force_x_ges_container").innerHTML += ForceXGes;
+    }
+</script>
+
+</html>
